@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/03/31 21:13:59 by arthur           ###   ########.fr        #
+#    Updated: 2018/04/02 17:56:50 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ HEADER = $(addprefix $(HEADER_PATH)/,$(HEADER_NAME))
 SRC_PATH = srcs
 SRC_NAME = astest.c \
 		   utils.c \
-		   lexing.c
+		   lexing.c \
+		   parsing.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = objs

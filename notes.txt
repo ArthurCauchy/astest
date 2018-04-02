@@ -1,0 +1,16 @@
+Choses a prendre en compte dans l'analyse syntaxique :
+- ;
+- &&
+- ||
+- | (pipe)
+
+Choses a prendre en compte avant :
+- <
+- <<
+- >
+- >>
+
+
+
+
+https://www.gnu.org/software/bash/manual/html_node/Redirections.html

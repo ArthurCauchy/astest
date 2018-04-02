@@ -6,21 +6,6 @@
 # include <stdlib.h>
 # include "libft.h"
 
-typedef enum	e_token
-{
-	ROOT,
-	ARG,
-	SEMICOL
-}				t_token;
-
-typedef struct	s_ast
-{
-	t_token			token;
-	char			*arg;
-	struct s_ast	*right;
-	struct s_ast	*left;
-}				t_ast;
-
 typedef struct	s_lexdata
 {
 	char	*buff;
@@ -32,7 +17,21 @@ typedef struct	s_word
 {
 	char			*str;
 	struct s_word	*next;
-}				t_word;
+}
+
+typedef enum	e_token
+{
+	ARG,
+	SEMICOL
+}				t_token;
+
+typedef struct	s_ast
+{
+	t_token			token;
+	t_word			*arglist;
+	struct s_ast	*right;
+	struct s_ast	*left;
+}				t_ast;
 
 /*
 ** utils.c
@@ -45,5 +44,11 @@ void	exit_error(char *errmsg);
 */
 
 void	lex_analysis(char *cmdline, t_word **wordlist);
+
+/*
+** parsing.c
+*/
+
+void	syntax_analysis(t_word *wordlist, t_ast **root);
 
 #endif
