@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/02 13:55:26 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/02 13:55:30 by acauchy          ###   ########.fr       */
+/*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
+/*   Updated: 2018/04/02 13:58:30 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "astest.h"
-
-void	exit_error(char *errmsg)
+static t_ast	*new_ast_node(t_token token, char *arg)
 {
-	if (errmsg)
-	{
-		ft_putendl_fd(errmsg, 2);
-	}
-	else
-		ft_putendl_fd("Error.", 2);
-	exit(1);
+	t_ast	*node;
+
+	if (!(node = (t_ast*)malloc(sizeof(t_ast))))
+		exit_error("malloc() error");
+	node->token = token;
+	node->arg = ft_strdup(arg);
+	node->left = NULL;
+	node->right = NULL;
+	return (node);
+}
+
+static void		syntax_analysis(t_word *wordlist, t_ast **root)
+{
 }
