@@ -10,7 +10,22 @@ Choses a prendre en compte avant :
 - >
 - >>
 
+Erreurs de csh :
+- 'ls|' : Invalid null command.
+- '|cat' : Invalid null command.
 
-
+Notes :
+- Le & simple semble agir comme un ';' en plus de mettre le process en arriere plan
+- Peut-être ça peut être sympa d'avoir un quoting gradue : 1 = simple quote et 2 = double quote, ou l'inverse
 
 https://www.gnu.org/software/bash/manual/html_node/Redirections.html
+
+Ordre de traitement des operateurs :
+- LEXING
+	- ;
+	- <, <<, >, >>
+- PARSING
+	- &&
+	- ||
+
+/!\ le lexer doit quand meme separer les && et || du reste pour faire marcher ls&&ls

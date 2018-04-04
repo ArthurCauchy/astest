@@ -17,18 +17,21 @@ typedef struct	s_word
 {
 	char			*str;
 	struct s_word	*next;
-}
+}				t_word;
 
 typedef enum	e_token
 {
 	ARG,
-	SEMICOL
+	AND,
+	OR,
+	PIPE
 }				t_token;
 
 typedef struct	s_ast
 {
 	t_token			token;
 	t_word			*arglist;
+	struct s_ast	*parent;
 	struct s_ast	*right;
 	struct s_ast	*left;
 }				t_ast;
@@ -40,10 +43,22 @@ typedef struct	s_ast
 void	exit_error(char *errmsg);
 
 /*
-** lexing.c
+** word.c
 */
 
+t_word	*new_word(char *str);
+
+/*
+** lexing.c, lexing_[token].c
+*/
+
+int		lex_is_separator(char c);
+void	add_word(char *str, t_word **wordlist);
 void	lex_analysis(char *cmdline, t_word **wordlist);
+void	lex_semicol_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
+void	lex_space_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
+void	lex_amp_and_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
+void	lex_pipe_or_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 
 /*
 ** parsing.c

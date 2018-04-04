@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/02 17:56:50 by acauchy          ###   ########.fr        #
+#    Updated: 2018/04/04 14:31:41 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ HEADER = $(addprefix $(HEADER_PATH)/,$(HEADER_NAME))
 SRC_PATH = srcs
 SRC_NAME = astest.c \
 		   utils.c \
+		   word.c \
 		   lexing.c \
+		   lexing_semicol.c \
+		   lexing_space.c \
+		   lexing_amp_and.c \
+		   lexing_pipe_or.c \
 		   parsing.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
