@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/04 13:49:56 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/06 10:38:32 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int				main(void)
 	char	buff[4096];
 	int		size_read;
 	t_word	*wordlist;
-	//t_ast	*ast;
+	t_ast	*ast;
 
 	wordlist = NULL;
-	//ast = NULL;
+	ast = NULL;
 	while ((size_read = read(0, buff, 4095)))
 	{
 		buff[size_read] = '\0';
@@ -39,6 +39,8 @@ int				main(void)
 		}
 
 		//endtest
+		ft_putstr("\n\n");
+		syntax_analysis(wordlist, &ast);
 	}
 	return (0);
 }

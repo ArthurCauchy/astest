@@ -31,7 +31,6 @@ typedef struct	s_ast
 {
 	t_token			token;
 	t_word			*arglist;
-	struct s_ast	*parent;
 	struct s_ast	*right;
 	struct s_ast	*left;
 }				t_ast;
@@ -61,9 +60,13 @@ void	lex_amp_and_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 void	lex_pipe_or_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 
 /*
-** parsing.c
+** parsing.c, parsing_[token].c
 */
 
+t_ast	*new_ast_node(t_token token, t_word *arglist);
 void	syntax_analysis(t_word *wordlist, t_ast **root);
+void    parse_arg(t_word **symbol, t_ast **current);
+void    parse_and(t_word **symbol, t_ast **current);
+void    parse_or(t_word **symbol, t_ast **current);
 
 #endif

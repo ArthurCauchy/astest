@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/04 14:31:41 by acauchy          ###   ########.fr        #
+#    Updated: 2018/04/06 15:11:33 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,16 @@ SRC_PATH = srcs
 SRC_NAME = astest.c \
 		   utils.c \
 		   word.c \
+		   ast.c \
 		   lexing.c \
 		   lexing_semicol.c \
 		   lexing_space.c \
 		   lexing_amp_and.c \
 		   lexing_pipe_or.c \
-		   parsing.c
+		   parsing.c \
+		   parsing_arg.c \
+		   parsing_and.c \
+		   parsing_or.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = objs
