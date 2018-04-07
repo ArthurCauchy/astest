@@ -66,6 +66,7 @@ void	lex_pipe_or_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 t_ast	*new_ast_node(t_token token, t_word *arglist);
 void	syntax_analysis(t_word *wordlist, t_ast **root);
 void    parse_arg(t_word **symbol, t_ast **current);
+void    parse_pipe(t_word **symbol, t_ast **current);
 void    parse_and(t_word **symbol, t_ast **current);
 void    parse_or(t_word **symbol, t_ast **current);
 

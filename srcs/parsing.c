@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/06 15:17:02 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/07 13:30:52 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@ static void		print_ast(t_ast *root)
 	if (root->token == ARG)
 	{
 		cur = root->arglist;
+		if (!cur)
+			ft_putstr("NULL");
 		while (cur)
 		{
 			ft_putstr(cur->str);
 			cur = cur->next;
 		}
 	}
+	else if (root->token == PIPE)
+		ft_putstr(" PIPE ");
 	else if (root->token == AND)
 		ft_putstr(" AND ");
 	else if (root->token == OR)

@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/06 15:11:33 by arthur           ###   ########.fr        #
+#    Updated: 2018/04/07 13:01:06 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC_NAME = astest.c \
 		   lexing_pipe_or.c \
 		   parsing.c \
 		   parsing_arg.c \
+		   parsing_pipe.c \
 		   parsing_and.c \
 		   parsing_or.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
