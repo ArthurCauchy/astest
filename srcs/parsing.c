@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/07 13:30:52 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/07 14:22:42 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void		print_ast(t_ast *root)
 		ft_putstr(" AND ");
 	else if (root->token == OR)
 		ft_putstr(" OR ");
+	else if (root->token == SEMICOL)
+		ft_putstr(" ; ");
 	print_ast(root->right);
 	ft_putstr(")");
 }
@@ -48,7 +50,7 @@ static void		build_tree(t_word **wordlist, t_ast **root)
 	start_word = new_word("");
 	start_word->next = *wordlist;
 	*wordlist = start_word;
-	parse_or(wordlist, root);
+	parse_semicol(wordlist, root);
 }
 
 void			syntax_analysis(t_word *wordlist, t_ast **root)

@@ -22,9 +22,10 @@ typedef struct	s_word
 typedef enum	e_token
 {
 	ARG,
+	PIPE,
 	AND,
 	OR,
-	PIPE
+	SEMICOL
 }				t_token;
 
 typedef struct	s_ast
@@ -69,5 +70,6 @@ void    parse_arg(t_word **symbol, t_ast **current);
 void    parse_pipe(t_word **symbol, t_ast **current);
 void    parse_and(t_word **symbol, t_ast **current);
 void    parse_or(t_word **symbol, t_ast **current);
+void    parse_semicol(t_word **symbol, t_ast **current);
 
 #endif

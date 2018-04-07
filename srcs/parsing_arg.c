@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/07 13:31:19 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/07 14:23:31 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	is_token(char *str)
 {
-	if (ft_strcmp(str, "||") == 0
+	if (ft_strcmp(str, ";") == 0
+			|| ft_strcmp(str, "||") == 0
 			|| ft_strcmp(str, "&&") == 0
 			|| ft_strcmp(str, "|") == 0)
 		return (1);
