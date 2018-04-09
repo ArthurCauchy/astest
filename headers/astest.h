@@ -60,6 +60,7 @@ void	lex_space_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 void	lex_amp_and_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 void	lex_pipe_or_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 void	lex_rshift_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
+void	lex_lshift_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 
 /*
 ** parsing.c, parsing_[token].c
