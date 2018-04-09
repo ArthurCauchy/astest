@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:13 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 15:19:38 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/09 17:38:57 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,32 @@ void			add_word(char *str, t_word **wordlist)
 	}
 }
 
+void			update_quotes(char *cmdline, t_lexdata *lexdata, int *quoted)
+{
+	if (*quoted == 0)
+	{
+		if (cmdline[lexdata->i] == '\'')
+			*quoted = 1;
+		else if (cmdline[lexdata->i] == '"')
+			*quoted = 2;
+	}
+	else if (*quoted == 1)
+	{
+		if (cmdline[lexdata->i] == '\'')
+			*quoted = 0;
+		else if (cmdline[lexdata->i] == '"')
+			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
+	}
+	else if (*quoted == 2)
+	{
+		if (cmdline[lexdata->i] == '"')
+			*quoted = 0;
+		else if (cmdline[lexdata->i] == '\'')
+			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
+	}
+
+}
+
 void			lex_analysis(char *cmdline, t_word **wordlist)
 {
 	t_lexdata	*lexdata;
@@ -58,8 +84,8 @@ void			lex_analysis(char *cmdline, t_word **wordlist)
 			lex_rshift_word(cmdline, wordlist, lexdata);
 		else if (!quoted && cmdline[lexdata->i] == '<')
 			lex_lshift_word(cmdline, wordlist, lexdata);
-		else if (cmdline[lexdata->i] == '"')
-			quoted = (quoted) ? 0 : 1;
+		else if (cmdline[lexdata->i] == '\'' || cmdline[lexdata->i] == '"')
+			update_quotes(cmdline, lexdata, &quoted);
 		else
 			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
 		++lexdata->i;

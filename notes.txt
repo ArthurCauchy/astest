@@ -27,6 +27,7 @@ Notes :
 
 TODO :
 - comprendre le man 2 pipe et faire des tests
+- fonction pour check les unmatched quotes
 
 Choses communes a toutes les commandes :
 - fd d'entree
