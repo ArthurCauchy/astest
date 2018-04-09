@@ -6,16 +6,30 @@ Ordre de priorite des operateurs :
 
 Les redirections sont gerees apres
 
-Erreurs de csh :
+csh :
 - 'ls|' : Invalid null command.
 - '|cat' : Invalid null command.
+- 'ls &&' : Invalid null command.
+- '&& ls' : OK
+- 'ls ||' : Invalid null command.
+- '|| ls' : Invalid null command.
+- 'ls |' : Invalid null command.
+- '| ls' : Invalid null command.
+- '&&' : OK
+- '||' : Invalid null command.
+- ';' : OK
+- ';;' : OK
 
 Notes :
 - Le & simple semble agir comme un ';' en plus de mettre le process en arriere plan
 - Peut-être ça peut être sympa d'avoir un quoting gradue : 1 = simple quote et 2 = double quote, ou l'inverse
 
 TODO :
-- Faire une fct qui valide l'AST
-- Faire l'interpreteur
+- comprendre le man 2 pipe et faire des tests
+
+Choses communes a toutes les commandes :
+- fd d'entree
+- fd de sortie
+- un code de retour
 
 https://www.gnu.org/software/bash/manual/html_node/Redirections.html

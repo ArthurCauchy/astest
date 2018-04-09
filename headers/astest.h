@@ -72,4 +72,11 @@ void    parse_and(t_word **symbol, t_ast **current);
 void    parse_or(t_word **symbol, t_ast **current);
 void    parse_semicol(t_word **symbol, t_ast **current);
 
+/*
+** parsing_validator.c
+*/
+
+char	*code_to_errmessage(int code);
+int		validate_ast(t_ast *root);
+
 #endif

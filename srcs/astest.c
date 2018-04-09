@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 10:12:37 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/09 11:16:37 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int				main(void)
 	int		size_read;
 	t_word	*wordlist;
 	t_ast	*ast;
+	t_word	*cur;
+	int		retcode;
+	char	*tmp;
 
 	wordlist = NULL;
 	ast = NULL;
@@ -29,18 +32,22 @@ int				main(void)
 		if (ft_strlen(buff) == 0)
 			break;
 		lex_analysis(buff, &wordlist);
-
-		//test
-		t_word	*cur = wordlist;
+		cur = wordlist;
 		while (cur)
 		{
 			ft_fminiprint(1, "\"%l0s%\"\n", cur->str);
 			cur = cur->next;
 		}
-
-		//endtest
 		ft_putstr("\n\n");
 		syntax_analysis(wordlist, &ast);
+		ft_putstr("\n\n");
+		retcode = validate_ast(ast);
+		if (retcode != 0)
+		{
+			tmp = code_to_errmessage(retcode);
+			ft_putendl_fd(tmp, 2);
+			free(tmp);
+		}
 	}
 	return (0);
 }
