@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_or.c                                       :+:      :+:    :+:   */
+/*   parsing_parse_pipe.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/06 15:02:25 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/09 10:07:32 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "astest.h"
 
-void		parse_or(t_word **symbol, t_ast **current)
+void		parse_pipe(t_word **symbol, t_ast **current)
 {
-	t_ast	*or;
+	t_ast	*pipe;
 
-	parse_and(symbol, current);
-	while (*symbol && ft_strcmp((*symbol)->str, "||") == 0)
+	parse_arg(symbol, current);
+	while (*symbol && ft_strcmp((*symbol)->str, "|") == 0)
 	{
-		or = new_ast_node(OR, NULL);
-		or->left = *current;
-		parse_and(symbol, current);
-		or->right = *current;
-		*current = or;
+		pipe = new_ast_node(PIPE, NULL);
+		pipe->left = *current;
+		parse_arg(symbol, current);
+		pipe->right = *current;
+		*current = pipe;
 	}
 }

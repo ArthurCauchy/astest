@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/07 14:10:44 by arthur           ###   ########.fr        #
+#    Updated: 2018/04/09 10:07:53 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,11 @@ SRC_NAME = astest.c \
 		   lexing_amp_and.c \
 		   lexing_pipe_or.c \
 		   parsing.c \
-		   parsing_arg.c \
-		   parsing_pipe.c \
-		   parsing_and.c \
-		   parsing_or.c \
-		   parsing_semicol.c
+		   parsing_parse_arg.c \
+		   parsing_parse_pipe.c \
+		   parsing_parse_and.c \
+		   parsing_parse_or.c \
+		   parsing_parse_semicol.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = objs
