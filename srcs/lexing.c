@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:13 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/04 14:43:50 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/09 14:27:10 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void			lex_analysis(char *cmdline, t_word **wordlist)
 			lex_amp_and_word(cmdline, wordlist, lexdata);
 		else if (!quoted && cmdline[lexdata->i] == '|')
 			lex_pipe_or_word(cmdline, wordlist, lexdata);
+		else if (!quoted && cmdline[lexdata->i] == '>')
+			lex_rshift_word(cmdline, wordlist, lexdata);
 		else if (cmdline[lexdata->i] == '"')
 			quoted = (quoted) ? 0 : 1;
 		else
