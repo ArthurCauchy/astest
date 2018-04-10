@@ -19,11 +19,13 @@ csh :
 - '||' : Invalid null command.
 - ';' : OK
 - ';;' : OK
+- 'ls > aaa' (aaa fichier chmod 000) : false
 
 Notes :
 - Le & simple semble agir comme un ';' en plus de mettre le process en arriere plan
 - Peut-être ça peut être sympa d'avoir un quoting gradue : 1 = simple quote et 2 = double quote, ou l'inverse
 - Dans le cas des redirections, les fichiers sont crées avant d'executer la commande
+- le | reagit comme un ; sauf qu'il pipe en plus, et return le code d'erreur le plus recent
 
 TODO :
 - comprendre le man 2 pipe et faire des tests
@@ -35,3 +37,4 @@ Choses communes a toutes les commandes :
 - un code de retour
 
 https://www.gnu.org/software/bash/manual/html_node/Redirections.html
+https://stackoverflow.com/questions/8976139/shell-pipe-exit-immediately-when-one-command-fails

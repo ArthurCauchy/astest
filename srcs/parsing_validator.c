@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 10:15:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 11:38:55 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/10 13:38:50 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ char		*code_to_errmessage(int code)
 		return (NULL);
 }
 
+static int	is_null_node(t_ast *node)
+{
+	return (node->token == ARG && node->arglist == NULL);
+}
+
 static int	validate_node(t_ast *node)
 {
 	if (node->token == PIPE &&
-			(node->left->arglist == NULL || node->right->arglist == NULL))
+			(is_null_node(node->left) || is_null_node(node->right)))
 		return (1);
-	if (node->token == AND && node->right->arglist == NULL)
+	if (node->token == AND && is_null_node(node->right))
 		return (1);
 	if (node->token == OR &&
-			(node->left->arglist == NULL || node->right->arglist == NULL))
+			(is_null_node(node->left) || is_null_node(node->right)))
 		return (1);
 	return (0);
 }

@@ -81,4 +81,15 @@ void    parse_semicol(t_word **symbol, t_ast **current);
 char	*code_to_errmessage(int code);
 int		validate_ast(t_ast *root);
 
+/*
+** interpreter.c, interpreter_[token].c
+*/
+
+int		exec_ast(t_ast *node);
+int		exec_ast_semicol(t_ast *node);
+int		exec_ast_or(t_ast *node);
+int		exec_ast_and(t_ast *node);
+int		exec_ast_pipe(t_ast *node);
+int		exec_ast_arg(t_ast *node);
+
 #endif

@@ -6,14 +6,22 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 11:16:48 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 11:57:47 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/10 13:22:47 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "astest.h"
 
-/*void	exec_ast(t_ast *root)
+int	exec_ast(t_ast *node)
 {
-	exec_ast(root->left);
-	exec_ast(root->right);
-}*/
+	if (node->token == SEMICOL)
+		return (exec_ast_semicol(node));
+	else if (node->token == OR)
+		return (exec_ast_or(node));
+	else if (node->token == AND)
+		return (exec_ast_and(node));
+	else if (node->token == PIPE)
+		return(exec_ast_pipe(node));
+	else
+		return (exec_ast_arg(node));
+}

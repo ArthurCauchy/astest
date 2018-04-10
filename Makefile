@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/09 15:17:02 by arthur           ###   ########.fr        #
+#    Updated: 2018/04/10 12:33:56 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,12 @@ SRC_NAME = astest.c \
 		   parsing_parse_or.c \
 		   parsing_parse_semicol.c \
 		   parsing_validator.c \
-		   interpreter.c
+		   interpreter.c \
+		   interpreter_semicol.c \
+		   interpreter_or.c \
+		   interpreter_and.c \
+		   interpreter_pipe.c \
+		   interpreter_arg.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = objs

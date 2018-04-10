@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 11:16:37 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/10 13:34:37 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int				main(void)
 			tmp = code_to_errmessage(retcode);
 			ft_putendl_fd(tmp, 2);
 			free(tmp);
+			continue;
 		}
+		exec_ast(ast);
 	}
 	return (0);
 }
