@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 10:29:04 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/04 10:47:00 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/10 13:48:44 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,22 @@ t_word	*new_word(char *str)
 	new->str = dup_str;
 	new->next = NULL;
 	return (new);
+}
+
+void	delete_wordlist(t_word **head)
+{
+	t_word	*cur;
+	t_word	*prev;
+	
+	cur = *head;
+	prev = NULL;
+	while (cur)
+	{
+		if (cur->str)
+			free(cur->str);
+		prev = cur;
+		cur = cur->next;
+		free(prev);
+	}
+	*head = NULL;
 }

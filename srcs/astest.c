@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/10 13:34:37 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/10 13:50:50 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				main(void)
 		}
 		ft_putstr("\n\n");
 		syntax_analysis(wordlist, &ast);
+		delete_wordlist(&wordlist);
 		ft_putstr("\n\n");
 		retcode = validate_ast(ast);
 		if (retcode != 0)

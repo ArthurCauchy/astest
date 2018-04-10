@@ -47,6 +47,7 @@ void	exit_error(char *errmsg);
 */
 
 t_word	*new_word(char *str);
+void	delete_wordlist(t_word **head);
 
 /*
 ** lexing.c, lexing_[token].c
