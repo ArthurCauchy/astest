@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   astest.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/11 11:34:21 by acauchy           #+#    #+#             */
+/*   Updated: 2018/04/11 11:48:52 by acauchy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef __ASTEST_H
 # define __ASTEST_H
 
@@ -11,6 +23,7 @@ typedef struct	s_lexdata
 	char	*buff;
 	size_t	i;
 	size_t	j;
+	int		quoted;
 }				t_lexdata;
 
 typedef struct	s_word
@@ -40,63 +53,69 @@ typedef struct	s_ast
 ** utils.c
 */
 
-void	exit_error(char *errmsg);
+void			exit_error(char *errmsg);
 
 /*
 ** word.c
 */
 
-t_word	*new_word(char *str);
-void	delete_wordlist(t_word **head);
+t_word			*new_word(char *str);
+void			delete_wordlist(t_word **head);
 
 /*
 ** ast.c
 */
 
-t_ast	*new_ast_node(t_token token, t_word *arglist);
-void	delete_ast(t_ast **ast);
+t_ast			*new_ast_node(t_token token, t_word *arglist);
+void			delete_ast(t_ast **ast);
 
 /*
 ** lexing.c, lexing_[token].c
 */
 
-int		lex_is_separator(char c);
-void	add_word(char *str, t_word **wordlist);
-void	lex_analysis(char *cmdline, t_word **wordlist);
-void	lex_semicol_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
-void	lex_space_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
-void	lex_amp_and_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
-void	lex_pipe_or_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
-void	lex_rshift_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
-void	lex_lshift_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
+int				lex_is_separator(char c);
+void			add_word(char *str, t_word **wordlist);
+void			lex_analysis(char *cmdline, t_word **wordlist);
+void			lex_semicol_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_space_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_amp_and_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_pipe_or_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_rshift_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_lshift_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
 
 /*
 ** parsing.c, parsing_[token].c
 */
 
-void	syntax_analysis(t_word **wordlist, t_ast **root);
-void    parse_arg(t_word **symbol, t_ast **current);
-void    parse_pipe(t_word **symbol, t_ast **current);
-void    parse_and(t_word **symbol, t_ast **current);
-void    parse_or(t_word **symbol, t_ast **current);
-void    parse_semicol(t_word **symbol, t_ast **current);
+void			syntax_analysis(t_word **wordlist, t_ast **root);
+void			parse_arg(t_word **symbol, t_ast **current);
+void			parse_pipe(t_word **symbol, t_ast **current);
+void			parse_and(t_word **symbol, t_ast **current);
+void			parse_or(t_word **symbol, t_ast **current);
+void			parse_semicol(t_word **symbol, t_ast **current);
 
 /*
 ** parsing_validator.c
 */
 
-char	*code_to_errmessage(int code);
-int		validate_ast(t_ast *root);
+char			*code_to_errmessage(int code);
+int				validate_ast(t_ast *root);
 
 /*
 ** interpreter.c, interpreter_[token].c
 */
 
-int		exec_ast(t_ast *node);
-int		exec_ast_semicol(t_ast *node);
-int		exec_ast_or(t_ast *node);
-int		exec_ast_and(t_ast *node);
-int		exec_ast_pipe(t_ast *node);
-int		exec_ast_arg(t_ast *node);
+int				exec_ast(t_ast *node);
+int				exec_ast_semicol(t_ast *node);
+int				exec_ast_or(t_ast *node);
+int				exec_ast_and(t_ast *node);
+int				exec_ast_pipe(t_ast *node);
+int				exec_ast_arg(t_ast *node);
 
 #endif

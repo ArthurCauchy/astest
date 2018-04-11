@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 10:29:04 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/11 11:17:35 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/11 11:39:15 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	delete_wordlist(t_word **head)
 {
 	t_word	*cur;
 	t_word	*prev;
-	
+
 	cur = *head;
 	prev = NULL;
 	while (cur)

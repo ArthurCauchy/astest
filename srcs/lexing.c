@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:13 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/11 11:11:23 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/11 11:52:34 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,58 +34,60 @@ void			add_word(char *str, t_word **wordlist)
 	}
 }
 
-void			update_quotes(char *cmdline, t_lexdata *lexdata, int *quoted)
+static void		update_quotes(char *cmdline, t_lexdata *lexdata)
 {
-	if (*quoted == 0)
+	if (lexdata->quoted == 0)
 	{
 		if (cmdline[lexdata->i] == '\'')
-			*quoted = 1;
+			lexdata->quoted = 1;
 		else if (cmdline[lexdata->i] == '"')
-			*quoted = 2;
+			lexdata->quoted = 2;
 	}
-	else if (*quoted == 1)
+	else if (lexdata->quoted == 1)
 	{
 		if (cmdline[lexdata->i] == '\'')
-			*quoted = 0;
+			lexdata->quoted = 0;
 		else if (cmdline[lexdata->i] == '"')
 			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
 	}
-	else if (*quoted == 2)
+	else if (lexdata->quoted == 2)
 	{
 		if (cmdline[lexdata->i] == '"')
-			*quoted = 0;
+			lexdata->quoted = 0;
 		else if (cmdline[lexdata->i] == '\'')
 			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
 	}
+}
 
+static void		init_lexdata(char *cmdline, t_lexdata **lexdata)
+{
+	if (!(*lexdata = (t_lexdata*)ft_memalloc(sizeof(t_lexdata))))
+		exit_error("ft_memalloc() error");
+	if (!((*lexdata)->buff = (char*)malloc(ft_strlen(cmdline))))
+		exit_error("malloc() error");
 }
 
 void			lex_analysis(char *cmdline, t_word **wordlist)
 {
 	t_lexdata	*lexdata;
-	int			quoted;
 
-	quoted = 0;
-	if (!(lexdata = (t_lexdata*)ft_memalloc(sizeof(t_lexdata))))
-		exit_error("ft_memalloc() error");
-	if (!(lexdata->buff = (char*)malloc(ft_strlen(cmdline))))
-		exit_error("malloc() error");
+	init_lexdata(cmdline, &lexdata);
 	while (lexdata->i <= ft_strlen(cmdline))
 	{
-		if (!quoted && lex_is_separator(cmdline[lexdata->i]))
+		if (!lexdata->quoted && lex_is_separator(cmdline[lexdata->i]))
 			lex_space_word(cmdline, wordlist, lexdata);
-		else if (!quoted && cmdline[lexdata->i] == ';')
+		else if (!lexdata->quoted && cmdline[lexdata->i] == ';')
 			lex_semicol_word(cmdline, wordlist, lexdata);
-		else if (!quoted && cmdline[lexdata->i] == '&')
+		else if (!lexdata->quoted && cmdline[lexdata->i] == '&')
 			lex_amp_and_word(cmdline, wordlist, lexdata);
-		else if (!quoted && cmdline[lexdata->i] == '|')
+		else if (!lexdata->quoted && cmdline[lexdata->i] == '|')
 			lex_pipe_or_word(cmdline, wordlist, lexdata);
-		else if (!quoted && cmdline[lexdata->i] == '>')
+		else if (!lexdata->quoted && cmdline[lexdata->i] == '>')
 			lex_rshift_word(cmdline, wordlist, lexdata);
-		else if (!quoted && cmdline[lexdata->i] == '<')
+		else if (!lexdata->quoted && cmdline[lexdata->i] == '<')
 			lex_lshift_word(cmdline, wordlist, lexdata);
 		else if (cmdline[lexdata->i] == '\'' || cmdline[lexdata->i] == '"')
-			update_quotes(cmdline, lexdata, &quoted);
+			update_quotes(cmdline, lexdata);
 		else
 			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
 		++lexdata->i;
