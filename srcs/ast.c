@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 10:29:04 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/06 15:11:02 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/11 11:32:51 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,20 @@ t_ast			*new_ast_node(t_token token, t_word *arglist)
 	node->left = NULL;
 	node->right = NULL;
 	return (node);
+}
+
+static void		delete_ast_node(t_ast *node)
+{
+	if (!node)
+		return ;
+	delete_ast_node(node->left);
+	delete_ast_node(node->right);
+	delete_wordlist(&node->arglist);
+	free(node);
+}
+
+void			delete_ast(t_ast **ast)
+{
+	delete_ast_node(*ast);
+	*ast = NULL;
 }

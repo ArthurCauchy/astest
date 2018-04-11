@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:13 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 17:38:57 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/11 11:11:23 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ void			lex_analysis(char *cmdline, t_word **wordlist)
 			lexdata->buff[lexdata->j++] = cmdline[lexdata->i];
 		++lexdata->i;
 	}
+	free(lexdata->buff);
+	free(lexdata);
 }

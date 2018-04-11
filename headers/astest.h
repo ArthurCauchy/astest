@@ -50,6 +50,13 @@ t_word	*new_word(char *str);
 void	delete_wordlist(t_word **head);
 
 /*
+** ast.c
+*/
+
+t_ast	*new_ast_node(t_token token, t_word *arglist);
+void	delete_ast(t_ast **ast);
+
+/*
 ** lexing.c, lexing_[token].c
 */
 
@@ -67,8 +74,7 @@ void	lex_lshift_word(char *cmdline, t_word **wordlist, t_lexdata *lexdata);
 ** parsing.c, parsing_[token].c
 */
 
-t_ast	*new_ast_node(t_token token, t_word *arglist);
-void	syntax_analysis(t_word *wordlist, t_ast **root);
+void	syntax_analysis(t_word **wordlist, t_ast **root);
 void    parse_arg(t_word **symbol, t_ast **current);
 void    parse_pipe(t_word **symbol, t_ast **current);
 void    parse_and(t_word **symbol, t_ast **current);

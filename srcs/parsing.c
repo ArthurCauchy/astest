@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:53:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/09 10:13:03 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/11 11:32:52 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,19 @@ static void		print_ast(t_ast *root)
 static void		build_tree(t_word **wordlist, t_ast **root)
 {
 	t_word	*start_word;
+	t_word	*symbol;
 
+	symbol = *wordlist;
 	start_word = new_word("");
-	start_word->next = *wordlist;
-	*wordlist = start_word;
-	parse_semicol(wordlist, root);
+	start_word->next = symbol;
+	symbol = start_word;
+	parse_semicol(&symbol, root);
+	free(start_word->str);
+	free(start_word);
 }
 
-void			syntax_analysis(t_word *wordlist, t_ast **root)
+void			syntax_analysis(t_word **wordlist, t_ast **root)
 {
-	build_tree(&wordlist, root);
+	build_tree(wordlist, root);
 	print_ast(*root);
 }

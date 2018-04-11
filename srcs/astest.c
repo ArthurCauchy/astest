@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/10 13:50:50 by arthur           ###   ########.fr       */
+/*   Updated: 2018/04/11 11:32:55 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				main(void)
 			cur = cur->next;
 		}
 		ft_putstr("\n\n");
-		syntax_analysis(wordlist, &ast);
+		syntax_analysis(&wordlist, &ast);
 		delete_wordlist(&wordlist);
 		ft_putstr("\n\n");
 		retcode = validate_ast(ast);
@@ -48,9 +48,11 @@ int				main(void)
 			tmp = code_to_errmessage(retcode);
 			ft_putendl_fd(tmp, 2);
 			free(tmp);
+			delete_ast(&ast);
 			continue;
 		}
 		exec_ast(ast);
+		delete_ast(&ast);
 	}
 	return (0);
 }
