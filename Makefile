@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/04/10 12:33:56 by arthur           ###   ########.fr        #
+#    Updated: 2018/04/13 13:10:32 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC_NAME = astest.c \
 		   lexing_space.c \
 		   lexing_amp_and.c \
 		   lexing_pipe_or.c \
+		   lexing_shift.c \
 		   lexing_rshift.c \
 		   lexing_lshift.c \
 		   parsing.c \

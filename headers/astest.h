@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:34:21 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/13 10:46:45 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/13 13:37:39 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void			lex_space_word(char *cmdline,
 void			lex_amp_and_word(char *cmdline,
 		t_word **wordlist, t_lexdata *lexdata);
 void			lex_pipe_or_word(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_shift_src_redirect(char *cmdline,
+		t_word **wordlist, t_lexdata *lexdata);
+void			lex_shift_dest_redirect(char *cmdline,
 		t_word **wordlist, t_lexdata *lexdata);
 void			lex_rshift_word(char *cmdline,
 		t_word **wordlist, t_lexdata *lexdata);
