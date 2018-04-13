@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:59:57 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/13 13:45:39 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/13 13:49:58 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	lex_shift_src_redirect(char *cmdline,
 	if (ft_isdigit(src_fd))
 		lexdata->buff[lexdata->j++] = src_fd;
 }
-
 
 void	lex_shift_dest_redirect(char *cmdline,
 		t_word **wordlist, t_lexdata *lexdata)
