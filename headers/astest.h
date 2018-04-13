@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:34:21 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/11 11:48:52 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/13 10:46:45 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,11 @@ int				validate_ast(t_ast *root);
 ** interpreter.c, interpreter_[token].c
 */
 
-int				exec_ast(t_ast *node);
-int				exec_ast_semicol(t_ast *node);
-int				exec_ast_or(t_ast *node);
-int				exec_ast_and(t_ast *node);
-int				exec_ast_pipe(t_ast *node);
-int				exec_ast_arg(t_ast *node);
+int				exec_ast(t_ast *node, int inputfd, int outputfd);
+int				exec_ast_semicol(t_ast *node, int inputfd, int outputfd);
+int				exec_ast_or(t_ast *node, int inputfd, int outputfd);
+int				exec_ast_and(t_ast *node, int inputfd, int outputfd);
+int				exec_ast_pipe(t_ast *node, int inputfd, int outputfd);
+int				exec_ast_arg(t_ast *node, int inputfd, int outputfd);
 
 #endif

@@ -6,16 +6,18 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:37:02 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/11 11:37:03 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/13 11:38:18 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "astest.h"
 
-int	exec_ast_arg(t_ast *node)
+int	exec_ast_arg(t_ast *node, int inputfd, int outputfd)
 {
 	t_word	*cur;
 
+	(void)inputfd;
+	(void)outputfd;
 	cur = node->arglist;
 	ft_putstr("exec : ");
 	while (cur)

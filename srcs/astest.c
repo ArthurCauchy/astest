@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/02 13:56:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/04/11 11:32:55 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/04/13 10:57:10 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				main(void)
 			delete_ast(&ast);
 			continue;
 		}
-		exec_ast(ast);
+		exec_ast(ast, 0, 1);
 		delete_ast(&ast);
 	}
 	return (0);
